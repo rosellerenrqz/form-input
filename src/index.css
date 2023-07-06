@@ -26,7 +26,7 @@ input {
 }
 
 button {
-  @apply px-6 py-2 rounded-md border-none text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700;
+  @apply px-6 py-2 rounded-md border-none text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-700;
 }
 
 .form-control {

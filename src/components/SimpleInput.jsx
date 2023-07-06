@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const SimpleInput = () => {
   const [enteredName, setEnteredName] = useState("");
@@ -6,6 +6,14 @@ const SimpleInput = () => {
 
   const enteredNameIsValid = enteredName.trim() !== "";
   const nameInputInvalid = !enteredNameIsValid && enteredNameTouched;
+
+  let formIsValid = false;
+
+  if (enteredNameIsValid) {
+    formIsValid = true;
+  } else {
+    formIsValid = false;
+  }
 
   const nameInputHandler = (e) => {
     setEnteredName(e.target.value);
@@ -53,7 +61,7 @@ const SimpleInput = () => {
           )}
         </div>
         <div className="text-center">
-          <button>Submit</button>
+          <button disabled={!formIsValid}>Submit</button>
         </div>
       </form>
     </>
