@@ -20,7 +20,7 @@ label {
 }
 
 input {
-  @apply block font-bold mb-4 p-2
+  @apply block font-bold mb-2 p-2
   rounded-md border border-solid w-full min-w-full 
   focus:outline-none focus:bg-blue-100;
 }

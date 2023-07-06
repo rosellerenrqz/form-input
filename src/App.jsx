@@ -1,12 +1,12 @@
 import React from "react";
-import SimpleInput from "./components/SimpleInput";
+// import SimpleInput from "./components/SimpleInput";
 import BasicForm from "./components/BasicForm";
 
 const App = () => {
   return (
     <>
       <section>
-        <SimpleInput />
+        <BasicForm />
       </section>
     </>
   );
