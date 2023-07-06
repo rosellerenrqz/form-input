@@ -13,6 +13,23 @@ const SimpleInput = () => {
 
   const nameInputHandler = (e) => {
     setEnteredName(e.target.value);
+
+    //validation on every keystroke
+    if (e.target.value.trim() !== "") {
+      setEnterNameIsValid(true);
+      return;
+    }
+  };
+
+  const nameInputBlurHandler = (e) => {
+    setEnteredNameTouched(true);
+
+    if (enteredName.trim() === "" || enteredName.length <= 0) {
+      setEnterNameIsValid(false);
+      return;
+    } else {
+      setEnterNameIsValid(true);
+    }
   };
 
   const submitHandler = (e) => {
@@ -48,6 +65,7 @@ const SimpleInput = () => {
             placeholder="Name"
             value={enteredName}
             className={inputInvalidHandler}
+            onBlur={nameInputBlurHandler}
             onChange={nameInputHandler}
           />
           {nameInputInvalid && (
