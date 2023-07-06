@@ -1,54 +1,32 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 
 const SimpleInput = () => {
   const [enteredName, setEnteredName] = useState("");
-  const [enteredNameIsValid, setEnterNameIsValid] = useState(false);
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
 
-  useEffect(() => {
-    if (enteredNameIsValid) {
-      console.log("valid");
-    }
-  }, [setEnterNameIsValid]);
+  const enteredNameIsValid = enteredName.trim() !== "";
+  const nameInputInvalid = !enteredNameIsValid && enteredNameTouched;
 
   const nameInputHandler = (e) => {
     setEnteredName(e.target.value);
-
-    //validation on every keystroke
-    if (e.target.value.trim() !== "") {
-      setEnterNameIsValid(true);
-      return;
-    }
   };
 
-  const nameInputBlurHandler = (e) => {
+  const nameInputBlurHandler = () => {
     setEnteredNameTouched(true);
-
-    if (enteredName.trim() === "" || enteredName.length <= 0) {
-      setEnterNameIsValid(false);
-      return;
-    } else {
-      setEnterNameIsValid(true);
-    }
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     setEnteredNameTouched(true);
-
-    if (enteredName.trim() === "" || enteredName.length <= 0) {
-      setEnterNameIsValid(false);
+    if (!enteredNameIsValid) {
       return;
     }
 
-    setEnterNameIsValid(true);
     setEnteredName("");
-
+    setEnteredNameTouched(false); //adding this so after the submit and input will be empty, it wont show an error.
     console.log(enteredName);
   };
-
-  const nameInputInvalid = !enteredNameIsValid && enteredNameTouched;
 
   const inputInvalidHandler = nameInputInvalid
     ? "border-2 border-red-600 bg-red-200 focus:border-2 focus:border-red-500 focus:bg-red-100"
